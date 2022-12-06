@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>CIS 223 Chapter 10 Program</title>
+    <meta charset="utf-8">
+    <script>        
+    var list;
+        function createDOM()
+        {
+            list = document.getElementById("items");
+
+            var newElement = document.createElement("LI");
+            var nodeText = document.createTextNode("Camera");
+            newElement.appendChild(nodeText);
+			list.appendChild(newElement);
+		   
+		    var newElement = document.createElement("LI");
+            var nodeText = document.createTextNode("Sunscreen");
+            newElement.appendChild(nodeText);
+			list.appendChild(newElement);
+		   
+			var newElement = document.createElement("LI");
+            var nodeText = document.createTextNode("Appopriate Clothing");
+            newElement.appendChild(nodeText);
+			list.appendChild(newElement);  
+        }
+
+        //Swap items function.
+        function registerKey(keyEvent)
+        {
+            var keyValue = keyEvent.key;        
+            if (keyValue < "1" || keyValue > "3")
+            {   
+                alert("Only press 1, 2, or 3");
+                return;
+            }
+        
+            var userInput;
+            var newInput;
+            var newElement = document.createElement("LI");
+
+
+            //Prompt user for new entry.
+            userInput = prompt("Enter a new item for slot "+keyValue,"");
+        
+
+            //Check input for valid entry.
+            if (userInput != null && userInput != "")
+            {   
+                //Write Your code to Pass string input to Text Node.
+                //     .......
+                newInput = document.createTextNode(userInput);
+				newElement.appendChild(newInput);
+				
+                //Write Your code to Attach Text Node to Element.
+                //     .......
+                var whichNode = parseInt(keyValue);  // which item to be replaced
+                //Write Your code to Replace existing node with new node.
+                //     .......
+                list.replaceChild(newElement,list.childNodes[whichNode]);
+            }
+        }
+    </script>   
+</head>
+
+<body onload=createDOM() onkeypress=registerKey(event)>
+    <div id="wrapper">
+
+        <header>
+            <h1>The Grand Canyon</h1>
+        </header>
+
+        <main>
+            <h2>I am traveling solo to Arizona!</h2>
+            <p>Help me pack a few <em>essentials</em> for the trip. The desert gets pretty hot 
+			but around this time of year it is in the low 50s and can drop down to the high 30s
+			at night.</p>
+            <ol id="items">
+			</ol>
+    
+            <p>These provisions were carefully selected for this trip.<br><br>
+            However, you can swap out any of the three items by pressing:<br>
+            <strong>1</strong>, <strong>2</strong>, or <strong>3</strong> on your keyboard.</p>
+            
+        </main>
+    </div>
+</body>
+</html>
